@@ -1,0 +1,138 @@
+.paragraph-with-left-border {
+    border-left: solid black 2px;
+    background-color: #FBF3DB;
+    padding: 0.4rem 0.6rem;
+    padding-left: 0.75rem !important;
+    margin-left: 1.625rem !important;
+}
+
+.conForThem p{
+    padding-left: 2.5rem;
+    
+}
+
+.conForThem figure.table{
+    overflow-x: auto;
+    
+}
+.conForThem {
+    line-height: 1.25rem;
+    font-family: 'Arial';
+	font-size: 0.91rem;
+}
+
+.conForThem .details .summary{
+    padding-left: 2.5rem;
+    
+}
+
+.conForThem ul {
+    padding-left: 2.5rem;
+}
+
+.conForThem blockquote, details {
+	margin: 0 0;
+	color:darkgrey;
+}
+
+.conForThem figure.image_resized img {
+	width:100%;
+}
+
+.conForThem p, .content-container p {
+	margin:0;
+}
+
+.conForThem h3 {
+    font-size: 0.91rem;
+    margin-top: 0;
+    margin-bottom: 0.25rem;
+}
+
+.with_margin_bottom {
+    margin-bottom: 0.3rem !important;
+}
+
+.li_with_margin_bottom {
+    margin-bottom: 0.3rem !important;
+}
+
+.conForThem ul {
+    margin: 0;
+}
+
+.conForThem figure.table p {
+    padding-left:0;
+    
+}
+
+.conForThem figure.table td{
+    padding: 0.25rem;
+}
+
+.conForThem figure.table table{
+    margin-left:2.5rem;
+    border-collapse: collapse !important;
+}
+
+.conForThem figure {
+    margin:0;
+    padding:0;
+}
+
+/* .conForThem table, .content-container table {
+    margin-left:2.5rem;
+} */
+
+/* Настройка кнопки внутри details */
+.summary_before{
+    position:absolute;
+    top:0.1875rem;
+    left:1.25rem;
+    width: 1rem;
+    height: 1rem;
+    cursor: pointer;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.summary_before:hover {
+    background-color:rgb(217, 217, 217);
+}
+
+.summary_before:active {
+    background-color:rgb(141, 141, 141);
+}
+
+.summary_before img {
+    width: 60%;
+    height: 60%;
+    transition: 0.5s;
+    
+}
+
+/* END Настройка кнопки внутри details */
+
+.conForThem .with-out-indent {
+    padding-left: 1.25rem;
+}
+
+/* Маркеры*/
+.with_marker {
+    position: relative;
+}
+
+.marker {
+    position: absolute;
+    top:0.25rem;
+    left:1.1rem;
+    width: 1.2rem;
+    height: 1.2rem;
+}
+
+.marker img {
+    width: 1.2rem;
+    height: 1.2rem;
+}
+

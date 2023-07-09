@@ -1,0 +1,30 @@
+.button-container {
+    height:100%;
+    display:flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+#crudTable {
+    height:fit-content;
+}
+
+.crudTable-container {
+    overflow-x:auto;
+}
+
+.how-on-page {
+    background-color: white !important;
+    min-width: 500px;
+}
+
+.in-editor {
+    max-width: 900px;
+}
+
+/* Пнг эмодзи */
+.img-emoji img{
+    width:1.2rem;
+    height:1.2rem;
+    transform: translateY(0.25rem);
+}
