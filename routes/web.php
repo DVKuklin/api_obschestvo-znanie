@@ -22,5 +22,9 @@ use Illuminate\Http\Request;
 // });
 
 Route::get('/', function () {
-    return redirect('/admin');
+    return redirect('/admin/user');
+});
+
+Route::get('/admin/dashboard', function () {
+    return redirect('/admin/user');
 });
