@@ -68,6 +68,12 @@ class ThemeCrudController extends CrudController
             'type'=>'image',
             'prefix'=>'storage/'
         ]);
+        $this->crud->addColumn([
+            'name'=>'heading_image',
+            'label'=>'картинка-шапка',
+            'type'=>'image',
+            'prefix'=>'storage/'
+        ]);
         CRUD::column('description')->label('описание');
 
         /**
@@ -99,6 +105,12 @@ class ThemeCrudController extends CrudController
         $this->crud->addColumn([
             'name'=>'emoji',
             'label'=>'эмодзи',
+            'type'=>'image',
+            'prefix'=>'storage/'
+        ]);
+        $this->crud->addColumn([
+            'name'=>'heading_image',
+            'label'=>'картинка-шапка',
             'type'=>'image',
             'prefix'=>'storage/'
         ]);
@@ -145,7 +157,21 @@ class ThemeCrudController extends CrudController
             'upload'=> true,
             'disk'=>'public' 
         ]);
-        // CRUD::field('image')->label('картинка');
+        $this->crud->addField([
+            'name'=>'heading_image',
+            'label'=>'картинка-шапка',
+            'type'=>'upload',
+            'upload'=> true,
+            'disk'=>'public' 
+        ]);
+        $this->crud->addField([
+            'name'=>'heading_mobile_image',
+            'label'=>'картинка-шапка мобильная',
+            'type'=>'upload',
+            'upload'=> true,
+            'disk'=>'public' 
+        ]);
+
         CRUD::field('description')->label('описание');
 
         /**
