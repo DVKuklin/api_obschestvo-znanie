@@ -71,7 +71,7 @@ class PagesController extends Controller
     
         $theme = Theme::where('section',$section->id)
                         ->where('url',$request->theme_url)
-                        ->select('id','name', 'sort','image','emoji')
+                        ->select('id','name', 'sort','heading_image','emoji')
                         ->first();
 
         if ($theme == null) {
@@ -155,7 +155,7 @@ class PagesController extends Controller
             'status' => 'success',
             'section' => $section->name,
             'theme' => $theme->sort.". ".$theme->name,
-            'image' => $theme->image,
+            'image' => $theme->heading_image,
             'emoji' => $theme->emoji,
             'paragraphs' => $newParagraphs
         ];
