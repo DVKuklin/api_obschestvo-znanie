@@ -18,7 +18,9 @@ class Theme extends Model
         'section',
         'image',
         'description',
-        'emoji'
+        'emoji',
+        'heading_image',
+        'heading_mobile_image',
     ];
 
     public function setImageAttribute($value) {
@@ -33,6 +35,22 @@ class Theme extends Model
         $attribute_name = "emoji";
         $disk = "public_storage";
         $destination_path = "images/themes";
+
+        $this->uploadFileToDisk($value, $attribute_name, $disk, $destination_path);
+    }
+
+    public function setHeadingImageAttribute($value) {
+        $attribute_name = "heading_image";
+        $disk = "public_storage";
+        $destination_path = "images/themes/heading_images";
+
+        $this->uploadFileToDisk($value, $attribute_name, $disk, $destination_path);
+    }
+
+    public function setHeadingMobileImageAttribute($value) {
+        $attribute_name = "heading_mobile_image";
+        $disk = "public_storage";
+        $destination_path = "images/themes/heading_images";
 
         $this->uploadFileToDisk($value, $attribute_name, $disk, $destination_path);
     }
