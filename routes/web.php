@@ -28,3 +28,7 @@ Route::get('/', function () {
 Route::get('/admin/dashboard', function () {
     return redirect('/admin/user');
 });
+
+Route::get('/admin', function () {
+    return redirect('/admin/user');
+});
