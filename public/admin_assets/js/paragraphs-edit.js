@@ -128,6 +128,21 @@ function dataBoot() {
           classes: ['with_margin_bottom']
         },
         {
+          name: 'summ_left_1',
+          element: 'blockquote',
+          classes: ['summery_right_1']
+        },
+        {
+          name: 'summ_left_2',
+          element: 'blockquote',
+          classes: ['summery_right_2']
+        },
+        {
+          name: 'summ_left_3',
+          element: 'blockquote',
+          classes: ['summery_right_3']
+        },
+        {
           name: 'Интервал списка',
           element: 'li',
           classes: ['li_with_margin_bottom']
