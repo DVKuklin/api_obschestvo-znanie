@@ -195,17 +195,17 @@ function splitStr($str) {
 
     for ($i=0;$i<strlen($str);$i++) {
         if (!$b){
-            if ($str{$i}=='.') {
+            if ($str[i]=='.') {
                 $b=true;
-                if ($str{$i+1} == ' ') {
+                if ($str[$i+1] == ' ') {
                     $i=$i+1;
                 }
                 continue;
             }
 
-            $themeSort = $themeSort.$str{$i};
+            $themeSort = $themeSort.$str[$i];
         } else {
-            $themeName .=$str{$i};
+            $themeName .=$str[$i];
         }
 
     }
