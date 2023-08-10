@@ -22,4 +22,8 @@ class Paragraph extends Model
 
     protected $table = 'paragraphs';
 
+    public function isFavourite($user_id) {
+        return Favourite::where('user_id',$user_id)->where('paragraph_theme_id',$this->attributes['id'])->where('type','paragraph')->exists();
+    }
+
 }
