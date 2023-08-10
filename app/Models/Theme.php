@@ -58,4 +58,8 @@ class Theme extends Model
     public function sectionName() {
         return $this->belongsTo('App\Models\Section','section','id');
     }
+
+    public function isFavourite($user_id) {
+        return Favourite::where('user_id',$user_id)->where('paragraph_theme_id',$this->attributes['id'])->where('type','theme')->exists();
+    }
 }

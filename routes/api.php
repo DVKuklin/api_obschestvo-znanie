@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PagesController;
+use App\Http\Controllers\FavouritesController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\DeveloperController;
 use App\Http\Controllers\Admin\AdminApiController;
@@ -30,18 +31,12 @@ Route::controller(PagesController::class)->group(function() {
                 'getSectionNameAndThemeNameByUrl');
     Route::post('get_paragraps_by_section_and_theme_url',
                 'getParagraphsBySectionAndThemeUrl')->middleware('auth:sanctum');
-                Route::post('set_paragraph_to_favorites',
-                'setParagraphToFavorites')->middleware('auth:sanctum');
-    Route::post('delete_paragraph_from_favorites',
-                'deleteParagraphFromFavorites')->middleware('auth:sanctum');
-    Route::post('get_data_for_favorites_order_by_section_theme_asc',
-                'getDataForFavoritesOrderBySectionThemeAsc')->middleware('auth:sanctum');
-    Route::post('get_data_for_favorites_order_by_section_theme_desc',
-                'getDataForFavoritesOrderBySectionThemeDesc')->middleware('auth:sanctum');
-    Route::post('get_data_for_favorites_order_by_date_time_asc',
-                'getDataForFavoritesOrderByDateTimeAsc')->middleware('auth:sanctum');
-    Route::post('get_data_for_favorites_order_by_date_time_desc',
-                'getDataForFavoritesOrderByDateTimeDesc')->middleware('auth:sanctum');
+});
+
+Route::prefix('favourites')->middleware('auth:sanctum')->controller(FavouritesController::class)->group(function() {
+    Route::post('get_favourites', 'getFavourites');
+    Route::post('add_to_favourites', 'addToFavourites');
+    Route::post('remove_from_favourites', 'removeFromFavourites');
 });
 
 Route::controller(UserController::class)->group(function() {

@@ -27,7 +27,7 @@ class CreateFavouritesTable extends Migration
                     ->cascadeOnUpdate()
                     ->nullOnDelete();
 
-            $table->index(['user_id', 'paragraph_theme_id','type']);
+            $table->unique(['user_id', 'paragraph_theme_id','type']);
         });
     }
 
