@@ -11,6 +11,11 @@ class ChangeCollationInDescriptionInThemesTable extends Migration
      *
      * @return void
      */
+
+    //При попытке выполнить миграции на сервере, данная миграция выкинула исключение
+    //Смысл миграции в том, что бы сделать кодировку поля description таблицы themes такой же как кодировка у поля content таблицы paragraphs
+    //В итоге сделал вручную, потому что на сервере такой кодировки как на локале не было, и у content почему то другая оказалась.
+
     public function up()
     {
         Schema::table('themes', function (Blueprint $table) {
