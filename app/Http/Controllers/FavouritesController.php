@@ -13,7 +13,7 @@ class FavouritesController extends Controller
     public function getFavourites(Request $request) {
         $user_id = $request->user()->id;
 
-        $sql = "
+        $sql_paragraphs = "
             SELECT 
                 paragraphs.id as id,
                 paragraphs.sort as paragraph_sort,
@@ -37,10 +37,10 @@ class FavouritesController extends Controller
             join sections on sections.id = themes.section
                 
 
-            WHERE user_id = $user_id and type = 'paragraph'                
-            
-            UNION
-            
+            WHERE user_id = $user_id and type = 'paragraph'
+        ";
+
+        $sql_theme = "
             SELECT 
                 themes.id as id,
                 themes.sort as paragraph_sort,
@@ -65,6 +65,16 @@ class FavouritesController extends Controller
             WHERE user_id = $user_id and type = 'theme'
         ";
 
+        $filters = [];
+        $sql = $sql_paragraphs." UNION ".$sql_theme;
+        
+        if (isset($request->type)) {
+            switch ($request->type) {
+                case "paragraph": $sql = $sql_paragraphs; $filters['type']="paragraph"; break;
+                case "theme": $sql = $sql_theme; $filters['type']="theme"; break;
+            }
+        }
+
         $total_count = DB::select("
             SELECT count(*) as count from ($sql) as count_table
         ")[0]->count;
@@ -76,8 +86,6 @@ class FavouritesController extends Controller
                 $page = 1;
             }
         }
-
-        $filters = [];
 
         $limit = "5";
         if (isset($request->limit)) {
