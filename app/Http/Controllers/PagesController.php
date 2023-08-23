@@ -15,12 +15,22 @@ class PagesController extends Controller
     }
 
     function getThemesAndSectionBySectionUrl(Request $r) {
-        $section = Section::where('url',$r->section_url)->first();
+        $section = Section::where('url',$r->section_url)->select('id','name','image', 'url')->first();
         
-        $themes = Theme::where('section',$section->id)->select('name','url','sort')->orderBy('sort', 'asc')->get();
+        $themes = Theme::where('section',$section->id)->select('id','name','url','sort', 'emoji', 'image', 'description')->orderBy('sort', 'asc')->get();
+
+        $user = auth()->user();
+
+        foreach($themes as $theme) {
+            if ($user) {
+                $theme->isInFavourites = $theme->isFavourite($user->id);
+            } else {
+                $theme->isInFavourites = false;
+            }
+        }
 
         $data = [
-            'section' => $section->name,
+            'section' => $section,
             'themes' => $themes
         ];
 
