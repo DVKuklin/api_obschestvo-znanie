@@ -76,7 +76,7 @@ class PagesController extends Controller
     
         $theme = Theme::where('section',$section->id)
                         ->where('url',$request->theme_url)
-                        ->select('id','name', 'sort','heading_image','emoji')
+                        ->select('id','name', 'sort','heading_image','emoji', 'description')
                         ->first();
 
         if ($theme == null) {
@@ -136,7 +136,30 @@ class PagesController extends Controller
             $item->isInFavorites = $item->isFavourite($user->id);
         }
 
+        $navigation_params['left_src'] = null;
+        $navigation_params['left_theme_name'] = null;
+        $left_theme = Theme::where('section',$section->id)
+                            ->where('sort',$theme->sort - 1)
+                            ->select('url','name', 'sort')
+                            ->first();
+        if ($left_theme) {
+            $navigation_params['left_src'] = '/'.$section->url.'/'.$left_theme->url;
+            $navigation_params['left_theme_name'] = $left_theme->sort.'. '.$left_theme->name;
+        }
+
+        $navigation_params['right_src'] = null;
+        $navigation_params['right_theme_name'] = null;
+        $right_theme = Theme::where('section',$section->id)
+                            ->where('sort',$theme->sort + 1)
+                            ->select('url','name', 'sort')
+                            ->first();
+        if ($right_theme) {
+            $navigation_params['right_src'] = '/'.$section->url.'/'.$right_theme->url;
+            $navigation_params['right_theme_name'] = $right_theme->sort.'. '.$right_theme->name;
+        }
+
         $data = [
+            'navigation_params' => $navigation_params,
             'status' => 'success',
             'section' => $section->name,
             'theme' => $theme->sort.". ".$theme->name,
@@ -144,7 +167,9 @@ class PagesController extends Controller
             'theme_id'=>$theme->id,
             'image' => $theme->heading_image,
             'emoji' => $theme->emoji,
-            'paragraphs' => $paragraphs
+            'description' => $theme->description,
+            'paragraphs' => $paragraphs,
+
         ];
         return $data;
 
