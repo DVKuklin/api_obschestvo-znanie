@@ -162,7 +162,7 @@ function dataBoot() {
               definitions: styles
             },
             indentBlock: {
-              offset: 2.5,
+              offset: 1.25,
               unit: 'rem'
             }
           })
