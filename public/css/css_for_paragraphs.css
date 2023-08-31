@@ -3,7 +3,7 @@
     background-color: #FBF3DB;
     padding: 0.4rem 0.6rem;
     padding-left: 0.75rem !important;
-    margin-left: 1.625rem !important;
+    margin-left: 0.5rem !important;
 }
 
 .conForThem p{
@@ -126,7 +126,7 @@
 .marker {
     position: absolute;
     top:0.25rem;
-    left:0.1rem;
+    left:0.02rem;
     width: 1.2rem;
     height: 1.2rem;
 }
