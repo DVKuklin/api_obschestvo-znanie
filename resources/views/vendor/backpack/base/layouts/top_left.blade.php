@@ -4,7 +4,7 @@
 
 <head>
   @include(backpack_view('inc.head'))
-  <link rel="icon" href="/public/favicon.ico">
+  <link rel="icon" href="/favicon.ico">
 </head>
 
 <body class="{{ config('backpack.base.body_class') }}">
