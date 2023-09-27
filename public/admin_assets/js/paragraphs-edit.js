@@ -5,14 +5,6 @@ let btnDelete =
 let btnAdd = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-lg" viewBox="0 0 16 16">
   <path fill-rule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2Z"/>
 </svg>`;
-function getCookie(name) {
-  let matches = document.cookie.match(new RegExp(
-    "(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"
-  ));
-  return matches ? decodeURIComponent(matches[1]) : undefined;
-}
-
-const baseURL = document.location.protocol + "//" + document.location.host + "/api/admin/";
 
 let current_section = localStorage.getItem('paragraphs-edit-current_section');
 let current_theme = localStorage.getItem('paragraphs-edit-current_theme');
@@ -20,13 +12,15 @@ let current_theme = localStorage.getItem('paragraphs-edit-current_theme');
 let editors = [];//Здесь будут эдиторы
 let isDataChanged = false;//Если данные были изменены, то будет true
 
-dataBoot();
+$(document).ready(function() {
+  dataBoot();
+})
+
 
 function dataBoot() {
   //Загружаем данные и формируем таблицу
   $.ajax({
-    url: baseURL + "get_data_for_paragraphs_edit",
-    headers: { 'X-XSRF-TOKEN': getCookie('XSRF-TOKEN') },
+    url: "/admin/paragraphs_edit/get_data_for_paragraphs_edit",
     data: {
       current_section: current_section,
       current_theme: current_theme,
@@ -211,8 +205,7 @@ function saveParagraphs() {
   }
 
   $.ajax({
-    url: baseURL + "save_paragraphs",
-    headers: { 'X-XSRF-TOKEN': getCookie('XSRF-TOKEN') },
+    url: "/admin/paragraphs_edit/save_paragraphs",
     data: {
       paragraphs: paragraphs
     },
@@ -267,8 +260,7 @@ function addParagraph(sort, position) {
 
   if (b) {
     $.ajax({
-      url: baseURL + "add_paragraph",
-      headers: { 'X-XSRF-TOKEN': getCookie('XSRF-TOKEN') },
+      url: "/admin/paragraphs_edit/add_paragraph",
       data: {
         theme: current_theme,
         // theme: 453,
@@ -298,8 +290,7 @@ function deleteParagraph(id, sort) {
   let confirmation = confirm("Вы действительно хотите удалить параграф " + sort);
   if (!confirmation) return;
   $.ajax({
-    url: baseURL + "delete_paragraph",
-    headers: { 'X-XSRF-TOKEN': getCookie('XSRF-TOKEN') },
+    url: "/admin/paragraphs_edit/delete_paragraph",
     data: {
       paragraph_id: id,
     },

@@ -59,21 +59,10 @@ Route::controller(UserController::class)->group(function() {
 //     Route::post('change_paragraps_from_old_table_v_01','changeParagraphsFromOldTableV01');
 // });
 
-Route::middleware('checkIfAdmin')->controller(AdminApiController::class)->group(function() {
-// Route::controller(AdminApiController::class)->group(function() {
-    Route::post('admin/get_data_for_user_extended','getDataForUserExtended');
-    Route::post('admin/get_data_for_paragraphs_edit','getDataForParagraphsEdit');    
-    Route::post('admin/set_permition','setPermition');
-    Route::post('admin/set_permitions','setPermitions');//Установка сразу нескольких разрешений
-    Route::post('admin/add_paragraph','addParagraph');
-    Route::post('admin/delete_paragraph','deleteParagraph');
-    Route::post('admin/save_paragraphs','saveParagraphs');
-});
+// Route::post('/date_time_test', function (Request $request) {
+//     // $d = time()+(3*60*60);
 
-Route::post('/date_time_test', function (Request $request) {
-    // $d = time()+(3*60*60);
-
-    $d = time();
-    return date("d.m.Y H.i.s",$d) ;
-});
+//     $d = time();
+//     return date("d.m.Y H.i.s",$d) ;
+// });
 
