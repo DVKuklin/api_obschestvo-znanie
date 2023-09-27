@@ -1,26 +1,11 @@
-const baseURL = document.location.protocol + "//" + document.location.host + "/api/admin/";
-
-function getCookie(name) {
-    let matches = document.cookie.match(new RegExp(
-      "(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"
-    ));
-    return matches ? decodeURIComponent(matches[1]) : undefined;
-}
-
-
 let current_user = localStorage.getItem('current_user');
 let current_section = localStorage.getItem('current_section');
-let themes_on_page = [];
-
-dataBoot();
+var themes_on_page = [];
 
 function dataBoot() {
-
-  
   //Загружаем данные и формируем таблицу
   $.ajax({
-      url: baseURL+"get_data_for_user_extended",
-      headers: {'X-XSRF-TOKEN': getCookie('XSRF-TOKEN')},
+      url: "/admin/user_extended/get_data_for_user_extended",
       data: {
           current_user: current_user,
           current_section: current_section
@@ -140,9 +125,11 @@ function dataBoot() {
   });
 }
 
+
+
 function setPermitions(el) {
   $.ajax({
-    url: baseURL+"set_permitions",
+    url: "/admin/user_extended/set_permitions",
     data: {
         current_user: localStorage.getItem('current_user'),
         themes: themes_on_page,
@@ -173,7 +160,7 @@ function setCurrentSection() {
 
 function setPermition(el,theme_id) {
   $.ajax({
-    url: baseURL+"set_permition",
+    url: "/admin/user_extended/set_permition",
     data: {
         current_user: localStorage.getItem('current_user'),
         theme_id: theme_id,
@@ -185,3 +172,9 @@ function setPermition(el,theme_id) {
     }
   });
 }
+
+$(document).ready(function(){
+
+  dataBoot();
+  
+})
