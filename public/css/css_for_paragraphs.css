@@ -70,8 +70,12 @@
     padding: 0.25rem;
 }
 
+.conForThem figure.table {
+    overflow: visible;
+}
+
 .conForThem figure.table table{
-    margin-left:0.85rem;
+    margin-left:-0.3rem;
     border-collapse: collapse !important;
 }
 
