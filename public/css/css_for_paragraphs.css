@@ -127,6 +127,10 @@
     position: relative;
 }
 
+.conForThem figure.table p.with_marker {
+    padding-left: 1.25rem;
+}
+
 .marker {
     position: absolute;
     top:0.25rem;
