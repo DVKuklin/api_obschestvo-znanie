@@ -1,6 +1,6 @@
 1. git clone git@github.com:DVKuklin/api_obschestvo-znanie.git .
 
-2. conmposer install
+2. composer install
 
 3. cp .env.example .env
 
@@ -16,5 +16,7 @@
 6. Скопировать с сервера файлы папок
     public/storage
     public/uploads
+
+6. php artisan key:generate
 
 7. php artisan serve
