@@ -67,7 +67,7 @@
 }
 
 .conForThem figure.table td{
-    padding: 0.25rem;
+    /* padding: 0.25rem; */
 }
 
 .conForThem figure.table {
@@ -75,7 +75,7 @@
 }
 
 .conForThem figure.table table{
-    margin-left:-0.3rem;
+    margin-left:-0.05rem;
     border-collapse: collapse !important;
 }
 
@@ -145,13 +145,13 @@
 }
 
 .summery_right_1 {
-    margin-left: 2.5rem;
+    margin-left: 1.25rem;
 }
 
 .summery_right_2 {
-    margin-left: 5rem;
+    margin-left: 2.5rem;
 }
 
 .summery_right_3 {
-    margin-left: 7.5rem;
+    margin-left: 3.75rem;
 }
