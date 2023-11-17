@@ -3,10 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Section;
-use App\Models\Theme;
-use App\Models\Paragraph;
-use App\Models\User;
+use App\Models\{Section, Theme, Paragraph, User, AdditionalPages, AdditionalPagesContents};
 
 class PagesController extends Controller
 {
@@ -173,5 +170,37 @@ class PagesController extends Controller
         ];
         return $data;
 
+    }
+
+    public function getAdditionalPagesUrls() {
+        $pages = AdditionalPages::where('is_published', true)
+                                    ->orderBy('sort')
+                                    ->select('title','url','icon')
+                                    ->get();
+        return response()->json($pages,200);
+    }
+
+    public function getAdditionalPageByUrl(Request $request) {
+        $page=AdditionalPages::where('url',$request->url)
+                                ->where('is_published',true)
+                                ->select('id','title','icon')
+                                ->first();
+        if ($page) {
+            $contents = AdditionalPagesContents::where('additional_page_id',$page->id)
+                                                    ->where('is_published',true)
+                                                    ->orderBy('sort')
+                                                    ->select('content')
+                                                    ->get();
+            if (!$contents) {
+                $contents = [];
+            }
+            $data = [
+                'page'=>$page,
+                'contents'=>$contents,
+            ];
+            return response()->json($data,200);
+        }
+
+        return response()->json(['status'=>'notFound'],404);
     }
 }
