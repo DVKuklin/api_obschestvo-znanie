@@ -22,4 +22,6 @@ Route::group([
     Route::crud('paragraph', 'ParagraphCrudController');
     Route::crud('paragraphs_edit', 'ParagraphController');
     Route::crud('user_extended', 'UserExtendedController');
+    Route::crud('additional-pages', 'AdditionalPagesCrudController');
+    Route::crud('additional-pages-contents', 'AdditionalPagesContentsCrudController');
 }); // this should be the absolute last line of this file
