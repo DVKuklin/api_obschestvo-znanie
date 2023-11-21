@@ -15,3 +15,11 @@
 
 
 <li class="nav-item"><a class="nav-link" href="{{ backpack_url('elfinder') }}"><i class="nav-icon la la-files-o"></i> <span>{{ trans('backpack::crud.file_manager') }}</span></a></li>
+
+<li class="nav-item nav-dropdown">
+    <a class="nav-link nav-dropdown-toggle" href="#"><i class="nav-icon la la-users"></i>Дополнительные страницы</a>
+    <ul class="nav-dropdown-items">
+        <li class="nav-item"><a class="nav-link" href="{{ backpack_url('additional-pages') }}"><i class="nav-icon la la-question"></i>Страницы</a></li>
+        <li class="nav-item"><a class="nav-link" href="{{ backpack_url('additional-pages-contents') }}"><i class="nav-icon la la-question"></i> Контент</a></li>
+    </ul>
+</li>

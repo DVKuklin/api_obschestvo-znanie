@@ -31,6 +31,10 @@ Route::controller(PagesController::class)->group(function() {
                 'getSectionNameAndThemeNameByUrl');
     Route::post('get_paragraps_by_section_and_theme_url',
                 'getParagraphsBySectionAndThemeUrl')->middleware('auth:sanctum');
+    Route::get('get_additional_pages_urls',
+                'getAdditionalPagesUrls');
+    Route::get('get_additional_page_by_url',
+                'getAdditionalPageByUrl');          
 });
 
 Route::prefix('favourites')->middleware('auth:sanctum')->controller(FavouritesController::class)->group(function() {
